@@ -32,6 +32,22 @@ session_start();
  * переменные для проведения вычислений всего выражения.
  * --//--
  */
+interface iExpression //for main task functionalities 
+{
+    public static function parse($s);
+
+    public static function calculate($arrVal);
+}
+
+interface iOperation //for Plus, Minus, Multiply, Divider, Powerer operations
+{
+    public function calculate($arrVal=array());
+}
+
+interface iOperand //for Number,Variable, Bracket classes
+{
+    public function calculate($srrVal=array());
+}
 
 class stdOperation //for Plus, Minus, Multiply, Divider, Powerer
 {
@@ -100,12 +116,6 @@ class stdOperation //for Plus, Minus, Multiply, Divider, Powerer
             $this->right = new Number($right);
         }
     }
-
-    public function __invoke($left = '', $right = '')
-    {
-        return 'Sorry, not implement in this version';
-    }
-
 }
 
 class stdOperand //for Bracket, Variable, Number
@@ -145,9 +155,8 @@ class stdOperand //for Bracket, Variable, Number
     }
 }
 
-class Variable //extends stdOperand
+class Variable extends stdOperand implements iOperand
 {
-    public $value;
 
     public function __construct($s)
     {
@@ -167,9 +176,8 @@ class Variable //extends stdOperand
 
 }
 
-class Number //extends stdOperand
+class Number extends stdOperand implements iOperand
 {
-    public $value;
 
     public function __construct($s)
     {
@@ -182,7 +190,7 @@ class Number //extends stdOperand
     }
 }
 
-class Bracket extends stdOperand
+class Bracket extends stdOperand implements iOperand
 {
     public function calculate($arrVal=array())
     {
@@ -190,7 +198,7 @@ class Bracket extends stdOperand
     }
 }
 
-class Plus extends stdOperation
+class Plus extends stdOperation implements iOperation 
 {
     public function calculate($arrVal=array())
     {
@@ -198,7 +206,7 @@ class Plus extends stdOperation
     }
 }
 
-class Minus extends stdOperation
+class Minus extends stdOperation implements iOperation 
 {
     public $left;
     public $right;
@@ -209,7 +217,7 @@ class Minus extends stdOperation
     }
 }
 
-class Multiply extends stdOperation
+class Multiply extends stdOperation implements iOperation 
 {
     public function calculate($arrVal=array())
     {
@@ -217,7 +225,7 @@ class Multiply extends stdOperation
     }
 }
 
-class Divider extends stdOperation
+class Divider extends stdOperation implements iOperation 
 {
     public function calculate($arrVal=array())
     {
@@ -225,7 +233,7 @@ class Divider extends stdOperation
     }
 }
 
-class Powerer extends stdOperation
+class Powerer extends stdOperation implements iOperation 
 {
     public function calculate($arrVal=array())
     {
@@ -233,7 +241,7 @@ class Powerer extends stdOperation
     }
 }
 
-class Expression
+class Expression implements iExpression
 {
     public static $ob;//Хранилище объектов
     public static $err;//Хранение инфо-меток для отладки
@@ -478,11 +486,10 @@ class Expression
 //$s = 'x+(x-2)';//Sample string of arithm. operation
 //$s = '(y*(2+x)/(y+8))';
 //$s = '(1+x)*x^2-(y*(2+x)/(y+8))';//Sample string of arithm. operation
-$s = '(1+x)*x';//Sample string of arithm. operation
+//$s = '(1+x)*x';//Sample string of arithm. operation
 //$s = '(1+x)*x^2';//Sample string of arithm. operation
-//$s = '(1+x)*x^2-(y*1)';//Sample string of arithm. operation
+$s = '(1+x)*x^2-(y*1)';//Sample string of arithm. operation
 //$s = '(1+x)*(x^2-(y*1))';//Sample string of arithm. operation
-
 
 $calc = new Expression();
 $arrVal=array('x'=>3,'y'=>4);
