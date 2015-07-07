@@ -7,10 +7,6 @@
 //Всемирная. Чтобы увидеть копию этой лицензии, посетите:
 //http://creativecommons.org/licenses/by-nc-sa/4.0/.
 
-namespace tvitcom\arithmoparser;
-
-session_start();
-
 //----------Alhorithm:------------
 /* Общая идея создать конструктор в базовом классе который сам анализирует и
  * создает объект в текущем объекте согласно типу операции.
@@ -32,7 +28,10 @@ session_start();
  * переменные для проведения вычислений всего выражения.
  * --//--
  */
-interface iExpression //for main task functionalities 
+
+namespace tvitcom\arithmoparser;
+
+interface iExpression //for main task functionalities
 {
     public static function parse($s);
 
@@ -198,7 +197,7 @@ class Bracket extends stdOperand implements iOperand
     }
 }
 
-class Plus extends stdOperation implements iOperation 
+class Plus extends stdOperation implements iOperation
 {
     public function calculate($arrVal=array())
     {
@@ -206,7 +205,7 @@ class Plus extends stdOperation implements iOperation
     }
 }
 
-class Minus extends stdOperation implements iOperation 
+class Minus extends stdOperation implements iOperation
 {
     public $left;
     public $right;
@@ -217,7 +216,7 @@ class Minus extends stdOperation implements iOperation
     }
 }
 
-class Multiply extends stdOperation implements iOperation 
+class Multiply extends stdOperation implements iOperation
 {
     public function calculate($arrVal=array())
     {
@@ -225,7 +224,7 @@ class Multiply extends stdOperation implements iOperation
     }
 }
 
-class Divider extends stdOperation implements iOperation 
+class Divider extends stdOperation implements iOperation
 {
     public function calculate($arrVal=array())
     {
@@ -233,7 +232,7 @@ class Divider extends stdOperation implements iOperation
     }
 }
 
-class Powerer extends stdOperation implements iOperation 
+class Powerer extends stdOperation implements iOperation
 {
     public function calculate($arrVal=array())
     {
