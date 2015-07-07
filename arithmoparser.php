@@ -143,11 +143,6 @@ class stdOperand //for Bracket, Variable, Number
             $this->value = $s;
         }
     }
-
-    public function __call($calculate, $arguments)
-    {
-        return $this->value->calculate($arguments);
-    }
 }
 
 class Variable //extends stdOperand
@@ -189,11 +184,6 @@ class Number //extends stdOperand
 
 class Bracket extends stdOperand
 {
-    public function __call($calculate, $arguments)
-    {
-        return $this->value->calculate($arguments);
-    }
-
     public function calculate($arrVal=array())
     {
         return $this->value->calculate($arrVal);
@@ -202,11 +192,6 @@ class Bracket extends stdOperand
 
 class Plus extends stdOperation
 {
-    public function __call($calculate, $arrVal = array())
-    {
-        return $this->left->calculate($arrVal) + $this->right->calculate($arrVal);
-    }
-
     public function calculate($arrVal=array())
     {
         return $this->left->calculate($arrVal) + $this->right->calculate($arrVal);
@@ -218,11 +203,6 @@ class Minus extends stdOperation
     public $left;
     public $right;
 
-    public function __call($calculate, $arrVal = array())
-    {
-        return $this->left->calculate($arrVal) - $this->right->calculate($arrVal);
-    }
-
     public function calculate($arrVal=array())
     {
         return $this->left->calculate($arrVal) - $this->right->calculate($arrVal);
@@ -231,11 +211,6 @@ class Minus extends stdOperation
 
 class Multiply extends stdOperation
 {
-    public function __call($calculate, $arrVal = array())
-    {
-        return $this->left->calculate($arrVal) * $this->right->calculate($arrVal);
-    }
-
     public function calculate($arrVal=array())
     {
         return $this->left->calculate($arrVal) * $this->right->calculate($arrVal);
@@ -244,11 +219,6 @@ class Multiply extends stdOperation
 
 class Divider extends stdOperation
 {
-    public function __call($calculate, $arrVal = array())
-    {
-        return $this->left->calculate($arrVal) / $this->right->calculate($arrVal);
-    }
-
     public function calculate($arrVal=array())
     {
         return $this->left->calculate($arrVal) / $this->right->calculate($arrVal);
@@ -257,11 +227,6 @@ class Divider extends stdOperation
 
 class Powerer extends stdOperation
 {
-    public function __call($calculate, $arrVal = array())
-    {
-        return pow($this->left->calculate($arrVal), $this->right->calculate($arrVal));
-    }
-
     public function calculate($arrVal=array())
     {
         return pow($this->left->calculate($arrVal), $this->right->calculate($arrVal));
