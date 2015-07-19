@@ -247,7 +247,7 @@ class Expression implements iExpression
 
     public static function parse($s = '')
     {
-        $ob='';//Присвоим ничего для обнаруженного. Еще ничего не обнаруежено?!
+        $ob='';//Присвоим ничего для обнаруженного. Еще ничего не обнаружено?!
         //Если это строка в скобках то извлекаем из скобок
         if (self::IsAllInBrackets($s)) {
             $s = self::getBracketsContent($s);
