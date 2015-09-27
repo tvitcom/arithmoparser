@@ -1,11 +1,12 @@
 <?php
-//Источник произведения - https://github.com/tvitcom/arithmoparser
-//
-//Это произведение arithmoparser доступно по лицензии:
-//Creative Commons «Attribution-NonCommercial-ShareAlike»
-//(«Атрибуция — Некоммерческое использование — На тех же условиях») 4.0
-//Всемирная. Чтобы увидеть копию этой лицензии, посетите:
-//http://creativecommons.org/licenses/by-nc-sa/4.0/.
+/**
+ * Источник произведения - https://github.com/tvitcom/arithmoparser 
+ * Это произведение arithmoparser доступно по лицензии: 
+ * Creative Commons «Attribution-NonCommercial-ShareAlike» 
+ * («Атрибуция — Некоммерческое использование — На тех же условиях») 4.0 
+ * Всемирная. Чтобы увидеть копию этой лицензии, посетите: 
+ * http://creativecommons.org/licenses/by-nc-sa/4.0/.
+ * /
 
 //----------Описание алгоритма:------------
 /* Общая идея создать конструктор в базовом классе который сам анализирует и
